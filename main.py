@@ -9,7 +9,7 @@ except ImportError:
     from PIL import Image
 import tg_analytic
 
-bot = telebot.TeleBot("1161541935:AAFrkjEpbohPo0z75Fx4TXHKFcv4wChjV9Q")
+bot = telebot.TeleBot("1372969532:AAEVJgqxGHbza1FQxFIYm0qfiawmLnRz_vo")
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('Даша', 'Маша', 'Саша')
