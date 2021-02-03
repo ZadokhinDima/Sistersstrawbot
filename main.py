@@ -9,7 +9,7 @@ except ImportError:
     from PIL import Image
 import tg_analytic
 
-bot = telebot.TeleBot("1372969532:AAEVJgqxGHbza1FQxFIYm0qfiawmLnRz_vo")
+bot = telebot.TeleBot("1683079759:AAFpX7UK5o440oqQGlzT9_FBmHZXigFnb6w")
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('Даша', 'Маша', 'Саша')
@@ -80,43 +80,44 @@ def start_message(message):
 
     start_3_text = """*У цьому боті зібралися подружки - Даша, Маша, Саша, Соня і Катя з крискою Чітою ))*"""
 
-    start_4_text ="""
+    start_4_text = """
     
 Ти тепер у нашій тусовці :)
 Про нас: 
 
 """
-    start_5_text ="""*Даша*"""
-    start_6_text =""" - експертка з сексу та місячних;
+    start_5_text = """*Даша*"""
+    start_6_text = """ - експертка з сексу та місячних;
     
 """
 
-    start_7_text ="""*Маша*"""
-    start_8_text =""" - може розповісти тобі про насильство;
+    start_7_text = """*Маша*"""
+    start_8_text = """ - може розповісти тобі про насильство;
     
 """
 
-    start_9_text ="""*Саша*"""
-    start_10_text =""" - займається правами людей і допоможе тобі з доками;
+    start_9_text = """*Саша*"""
+    start_10_text = """ - займається правами людей і допоможе тобі з доками;
     
 """
 
-    start_11_text ="""*Соня*"""
-    start_12_text =""" - бізнес вумен, знає все про фінанси;
+    start_11_text = """*Соня*"""
+    start_12_text = """ - бізнес вумен, знає все про фінанси;
     
 """
 
-    start_13_text ="""*Катя*"""
-    start_14_text =""" - має список важливих контактів;
+    start_13_text = """*Катя*"""
+    start_14_text = """ - має список важливих контактів;
     
 """
 
-    start_15_text ="""Ну і криска """
-    start_16_text ="""*Чіта*"""
-    start_17_text =""" буде відповідальна за твій класний настрій та смачну їжу."""
-    start_text = start_0_text + start_1_text + start_2_text + start_3_text + start_4_text + start_5_text + start_6_text + start_7_text+start_8_text+start_9_text+start_10_text+start_11_text+start_12_text+start_13_text+start_14_text+start_15_text+start_16_text+start_17_text
+    start_15_text = """Ну і криска """
+    start_16_text = """*Чіта*"""
+    start_17_text = """ буде відповідальна за твій класний настрій та смачну їжу."""
+    start_text = start_0_text + start_1_text + start_2_text + start_3_text + start_4_text + start_5_text + start_6_text + start_7_text + start_8_text + start_9_text + start_10_text + start_11_text + start_12_text + start_13_text + start_14_text + start_15_text + start_16_text + start_17_text
     bot.send_message(message.chat.id, start_text, reply_markup=keyboard1, parse_mode="Markdown")
-    bot.send_sticker(message.chat.id,"CAACAgIAAxkBAAEB0dpgEUPxbM2cHj5JLjD0Xw51bvbyMwACGQADjAABfxwvDn60hrxInh4E")
+    bot.send_sticker(message.chat.id, "CAACAgIAAxkBAAEB0dpgEUPxbM2cHj5JLjD0Xw51bvbyMwACGQADjAABfxwvDn60hrxInh4E")
+
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
