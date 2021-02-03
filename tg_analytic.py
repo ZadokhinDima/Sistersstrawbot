@@ -27,6 +27,7 @@ def remove(user_id):
 
 # write data to csv
 def statistics(user_id, command):
+    return
     data = datetime.datetime.today().strftime("%Y-%m-%d")
     with open('data.csv', 'a', newline="") as fil:
         wr = csv.writer(fil, delimiter=';')
