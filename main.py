@@ -233,6 +233,13 @@ def handle_text(message):
         else:
             messages = tg_analytic.analysis(st, message.chat.id)
             bot.send_message(message.chat.id, messages)
+    else:
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row('Даша', 'Маша', 'Саша')
+        keyboard1.row('Соня', 'Катя', 'Чіта')
+        keyboard1.row('Історії', 'Бот створений за підтримки', 'Джерела інформації')
+        bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
+        bot.register_next_step_handler(message, handle_text)
 
 
 def dasha(message):
