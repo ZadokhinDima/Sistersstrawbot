@@ -2,6 +2,7 @@ import telebot
 from telebot import types
 import datetime
 import pandas as pd
+import traceback
 
 try:
     import Image
@@ -1007,4 +1008,10 @@ def contact_1(call):
 
 
 if __name__ == '__main__':
-    bot.polling()
+    while True:
+        try:
+            bot.polling()
+        except:
+            bot.send_message(317773288, traceback.format_exc())
+            pass
+
