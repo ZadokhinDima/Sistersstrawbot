@@ -32,6 +32,8 @@ df_acomm = pd.read_csv('accommodation.csv', delimiter=';')
 df_acomm = df_acomm.set_index('button')
 df_budget = pd.read_csv('budget.csv', delimiter=';')
 df_budget = df_budget.set_index('button')
+df_fraud = pd.read_csv('fraud.csv', delimiter=';')
+df_fraud = df_fraud.set_index('button')
 df_komunalka = pd.read_csv('komunalka.csv', delimiter=';')
 df_komunalka = df_komunalka.set_index('button')
 df_money = pd.read_csv('money.csv', delimiter=';')
@@ -42,6 +44,8 @@ df_entertainment = pd.read_csv('entertainment.csv', delimiter=';')
 df_entertainment = df_entertainment.set_index('button')
 df_nasylstvo = pd.read_csv('nasylstvo.csv', delimiter=';')
 df_nasylstvo = df_nasylstvo.set_index('button')
+df_boundary = pd.read_csv('boundary.csv', delimiter=';')
+df_boundary = df_boundary.set_index('button')
 df_cps = pd.read_csv('cps.csv', delimiter=';')
 df_cps = df_cps.set_index('button')
 df_kdm = pd.read_csv('kdm.csv', delimiter=';')
@@ -81,43 +85,44 @@ def start_message(message):
 
     start_3_text = """*У цьому боті зібралися подружки - Даша, Маша, Саша, Соня і Катя з крискою Чітою ))*"""
 
-    start_4_text ="""
+    start_4_text = """
     
 Ти тепер у нашій тусовці :)
 Про нас: 
 
 """
-    start_5_text ="""*Даша*"""
-    start_6_text =""" - експертка з сексу та місячних;
+    start_5_text = """*Даша*"""
+    start_6_text = """ - експертка з сексу та місячних;
     
 """
 
-    start_7_text ="""*Маша*"""
-    start_8_text =""" - може розповісти тобі про насильство;
+    start_7_text = """*Маша*"""
+    start_8_text = """ - може розповісти тобі про насильство;
     
 """
 
-    start_9_text ="""*Саша*"""
-    start_10_text =""" - займається правами людей і допоможе тобі з доками;
+    start_9_text = """*Саша*"""
+    start_10_text = """ - займається правами людей і допоможе тобі з доками;
     
 """
 
-    start_11_text ="""*Соня*"""
-    start_12_text =""" - бізнес вумен, знає все про фінанси;
+    start_11_text = """*Соня*"""
+    start_12_text = """ - бізнес вумен, знає все про фінанси;
     
 """
 
-    start_13_text ="""*Катя*"""
-    start_14_text =""" - має список важливих контактів;
+    start_13_text = """*Катя*"""
+    start_14_text = """ - має список важливих контактів;
     
 """
 
-    start_15_text ="""Ну і криска """
-    start_16_text ="""*Чіта*"""
-    start_17_text =""" буде відповідальна за твій класний настрій та смачну їжу."""
-    start_text = start_0_text + start_1_text + start_2_text + start_3_text + start_4_text + start_5_text + start_6_text + start_7_text+start_8_text+start_9_text+start_10_text+start_11_text+start_12_text+start_13_text+start_14_text+start_15_text+start_16_text+start_17_text
+    start_15_text = """Ну і криска """
+    start_16_text = """*Чіта*"""
+    start_17_text = """ буде відповідальна за твій класний настрій та смачну їжу."""
+    start_text = start_0_text + start_1_text + start_2_text + start_3_text + start_4_text + start_5_text + start_6_text + start_7_text + start_8_text + start_9_text + start_10_text + start_11_text + start_12_text + start_13_text + start_14_text + start_15_text + start_16_text + start_17_text
     bot.send_message(message.chat.id, start_text, reply_markup=keyboard1, parse_mode="Markdown")
-    bot.send_sticker(message.chat.id,"CAACAgIAAxkBAAEB0dpgEUPxbM2cHj5JLjD0Xw51bvbyMwACGQADjAABfxwvDn60hrxInh4E")
+    bot.send_sticker(message.chat.id, "CAACAgIAAxkBAAEB0dpgEUPxbM2cHj5JLjD0Xw51bvbyMwACGQADjAABfxwvDn60hrxInh4E")
+
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
@@ -125,6 +130,7 @@ def handle_text(message):
         tg_analytic.statistics(message.chat.id, message.text)
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Все про секс', 'Місячні')
+        keyboard1.row('Вперше на огляд')
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, """Йоу, мене звати Даша! Мені 19, і я з Києва. Моє статеве життя почалося в 16 років, я зустрічалася з 3 чуваками. 
 Зараз у мене тривалі романтичні стосунки з Максимом, і взагалі все кльово. Я періодично обстежуюся у гінеколога, і багато про це знаю. 
@@ -139,6 +145,7 @@ def handle_text(message):
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Детальніше', 'Важливо!', 'Куди звернутися?')
         keyboard1.row('Як?', 'Що буде?', 'Поради')
+        keyboard1.row('Особисті кордони')
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id,
                          "Привіт, я Маша. Мені 25, я психологиня, допоможу тобі розпізнати насильство та як себе захистити.",
@@ -168,6 +175,7 @@ def handle_text(message):
         tg_analytic.statistics(message.chat.id, message.text)
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row("Житло", "Планування бюджету", "Комуналка")
+        keyboard1.row("Обережно шахрайство")
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, """Звертайся до мене просто Соня. Мені 22, закінчила економічний універ. Моя мрія переїхати в Нью-Йорк, і я багато працюю над її реалізацією. 
 Якщо тебе цікавить мій план, натискай кнопки:""", reply_markup=keyboard1)
@@ -261,6 +269,12 @@ def dasha(message):
         bot.send_message(message.from_user.id, df_mis.loc[message.text]['text'],
                          reply_markup=keyboard1)
         bot.register_next_step_handler(message, mis)
+    elif message.text == 'Вперше на огляд':
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row('Підготовка', 'Акушерське насильство')
+        keyboard1.row('Повернутись назад')
+        bot.send_message(message.from_user.id, df_mis.loc[message.text]['text'], reply_markup=keyboard1)
+        bot.register_next_step_handler(message, first_time)
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Даша', 'Маша', 'Саша')
@@ -270,11 +284,32 @@ def dasha(message):
         bot.register_next_step_handler(message, handle_text)
 
 
+def first_time(message):
+    if message.text == 'Підготовка':
+        tg_analytic.statistics(message.chat.id, message.text)
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        bot.send_message(message.from_user.id, df_mis.loc[message.text + '1']['text'], reply_markup=keyboard1)
+        bot.send_message(message.from_user.id, df_mis.loc[message.text + '2']['text'], reply_markup=keyboard1)
+        bot.register_next_step_handler(message, first_time)
+    elif message.text == 'Акушерське насильство':
+        tg_analytic.statistics(message.chat.id, message.text)
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        bot.send_message(message.from_user.id, df_mis.loc[message.text]['text'], reply_markup=keyboard1)
+        bot.register_next_step_handler(message, first_time)
+    elif message.text == 'Повернутись назад':
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row('Все про секс', 'Місячні')
+        keyboard1.row('Вперше на огляд')
+        keyboard1.row('Повернутись назад')
+        bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
+        bot.register_next_step_handler(message, dasha)
+
+
 def chita(message):
     if message.text == 'Що подивитись/почитати?':
         tg_analytic.statistics(message.chat.id, message.text)
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
-        keyboard1.row('Серіали', 'Кіно', "Різне")
+        keyboard1.row('Серіали', 'Кіно', 'Книги', "Різне")
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, df_entertainment.loc[message.text]['text'], reply_markup=keyboard1)
         bot.register_next_step_handler(message, entertainment)
@@ -302,7 +337,7 @@ def histories(message):
         img1 = open('Юля.png', 'rb')
         bot.send_photo(message.chat.id, img1)
         img1.close()
-        img2 = open('Юля.png', 'rb')
+        img2 = open('Юля2.png', 'rb')
         bot.send_photo(message.chat.id, img2)
         img2.close()
         bot.register_next_step_handler(message, histories)
@@ -401,6 +436,7 @@ def sex(message):
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Все про секс', 'Місячні')
+        keyboard1.row('Вперше на огляд')
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
         bot.register_next_step_handler(message, dasha)
@@ -544,6 +580,15 @@ def nasylstvo(message):
         bot.send_message(message.from_user.id, "Що тебе цікавить?",
                          reply_markup=keyboard1)
         bot.register_next_step_handler(message, nasylstvo_2)
+    elif message.text == 'Особисті кордони':
+        tg_analytic.statistics(message.chat.id, message.text)
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row('Що це?', 'Типи', 'Види')
+        keyboard1.row('Як встановити?', 'Як захиститися?', "Що говорити?")
+        keyboard1.row('Повернутись назад')
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]["text"],
+                         reply_markup=keyboard1)
+        bot.register_next_step_handler(message, personal_boundary)
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Даша', 'Маша', 'Саша')
@@ -582,10 +627,45 @@ def nasylstvo_2(message):
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Детальніше', 'Важливо!', 'Куди звернутися?')
         keyboard1.row('Як?', 'Що буде?', 'Поради')
+        keyboard1.row('Особисті кордони')
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
         bot.register_next_step_handler(message, nasylstvo)
 
+
+def personal_boundary(message):
+    if message.text == 'Що це?':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]['text'])
+        bot.register_next_step_handler(message, personal_boundary)
+    elif message.text == 'Типи':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]['text'])
+        bot.register_next_step_handler(message, personal_boundary)
+    elif message.text == 'Види':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]['text'])
+        bot.register_next_step_handler(message, personal_boundary)
+    elif message.text == 'Як встановити?':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]['text'])
+        bot.register_next_step_handler(message, personal_boundary)
+    elif message.text == 'Як захиститися?':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]['text'])
+        bot.register_next_step_handler(message, personal_boundary)
+    elif message.text == 'Що говорити?':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_boundary.loc[message.text]['text'])
+        bot.register_next_step_handler(message, personal_boundary)
+    elif message.text == 'Повернутись назад':
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row('Детальніше', 'Важливо!', 'Куди звернутися?')
+        keyboard1.row('Як?', 'Що буде?', 'Поради')
+        keyboard1.row('Особисті кордони')
+        keyboard1.row('Повернутись назад')
+        bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
+        bot.register_next_step_handler(message, nasylstvo)
 
 def entertainment(message):
     if message.text == 'Серіали':
@@ -597,6 +677,10 @@ def entertainment(message):
         bot.send_message(message.from_user.id, df_entertainment.loc[message.text]['text'])
         bot.register_next_step_handler(message, entertainment)
     elif message.text == 'Різне':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_entertainment.loc[message.text]['text'])
+        bot.register_next_step_handler(message, entertainment)
+    elif message.text == 'Книги':
         tg_analytic.statistics(message.chat.id, message.text)
         bot.send_message(message.from_user.id, df_entertainment.loc[message.text]['text'])
         bot.register_next_step_handler(message, entertainment)
@@ -630,6 +714,13 @@ def money(message):
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
         bot.register_next_step_handler(message, money_2)
+    elif message.text == 'Обережно шахрайство':
+        tg_analytic.statistics(message.chat.id, message.text)
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row('Картка', 'OLX', 'Telegram', 'Історії з життя')
+        keyboard1.row('Повернутись назад')
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text]["text"], reply_markup=keyboard1)
+        bot.register_next_step_handler(message, fraud)
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Даша', 'Маша', 'Саша')
@@ -679,6 +770,35 @@ def money_2(message):
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row("Житло", "Планування бюджету", "Комуналка")
+        keyboard1.row("Обережно шахрайство")
+        keyboard1.row('Повернутись назад')
+        bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
+        bot.register_next_step_handler(message, money)
+
+
+def fraud(message):
+    if message.text == 'Картка':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text]['text'])
+        bot.register_next_step_handler(message, fraud)
+    elif message.text == 'OLX':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text + '1']['text'])
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text + '2']['text'])
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text + '3']['text'])
+        bot.register_next_step_handler(message, fraud)
+    elif message.text == 'Telegram':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text]['text'])
+        bot.register_next_step_handler(message, fraud)
+    elif message.text == 'Історії з життя':
+        tg_analytic.statistics(message.chat.id, message.text)
+        bot.send_message(message.from_user.id, df_fraud.loc[message.text]['text'])
+        bot.register_next_step_handler(message, fraud)
+    elif message.text == 'Повернутись назад':
+        keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
+        keyboard1.row("Житло", "Планування бюджету", "Комуналка")
+        keyboard1.row("Обережно шахрайство")
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
         bot.register_next_step_handler(message, money)
@@ -724,6 +844,7 @@ def mis(message):
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Все про секс', 'Місячні')
+        keyboard1.row('Вперше на огляд')
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
         bot.register_next_step_handler(message, dasha)
@@ -769,6 +890,7 @@ def mis_2(message):
 
 
 def doc(message):
+    stambul = df_nasylstvo.loc["Стамбульська конвенція"]['text']
     if message.text == 'Дія':
         tg_analytic.statistics(message.chat.id, message.text)
         bot.send_message(message.from_user.id, df_docs.loc[message.text]['text'])
@@ -826,6 +948,7 @@ def doc(message):
         img1 = open('насильство_2.jpg', 'rb')
         bot.send_photo(message.chat.id, img1)
         img1.close()
+        bot.send_message(message.chat.id, stambul)
         bot.register_next_step_handler(message, doc)
     elif message.text == 'Безоплатна правова допомога':
         tg_analytic.statistics(message.chat.id, message.text)
@@ -897,7 +1020,7 @@ def contact(message):
         tg_analytic.statistics(message.chat.id, message.text)
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
         keyboard1.row('Національна поліція України', 'Дитячі гарячі лінії')
-        keyboard1.row('Регіональні служби у справах дітей', 'Гарячі лінії з питань запобігання насильству')
+        keyboard1.row('Регіональні служби у справах дітей', 'Інші гарячі лінії')
         keyboard1.row('Повернутись назад')
         bot.send_message(message.from_user.id, "Що тебе цікавить?", reply_markup=keyboard1)
         bot.register_next_step_handler(message, garyachi)
@@ -934,14 +1057,14 @@ def garyachi(message):
             inline_keybord6.add(button)
         bot.send_message(message.chat.id, 'Регіональні служби у справах дітей', reply_markup=inline_keybord6)
         bot.register_next_step_handler(message, garyachi)
-    elif message.text == 'Гарячі лінії з питань запобігання насильству':
+    elif message.text == 'Інші гарячі лінії':
         tg_analytic.statistics(message.chat.id, message.text)
         inline_keybord7 = telebot.types.InlineKeyboardMarkup(row_width=2)
-        for i in range(15):
+        for i in range(17):
             linii_nas = df_lin_nas.iloc[i].name
             button = telebot.types.InlineKeyboardButton(text=linii_nas, callback_data=linii_nas)
             inline_keybord7.add(button)
-        bot.send_message(message.chat.id, 'Гарячі лінії з питань запобігання насильству', reply_markup=inline_keybord7)
+        bot.send_message(message.chat.id, 'Інші гарячі лінії', reply_markup=inline_keybord7)
         bot.register_next_step_handler(message, garyachi)
     elif message.text == 'Повернутись назад':
         keyboard1 = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -999,8 +1122,8 @@ def contact_1(call):
                 bot.send_message(call.message.chat.id, df_lin_reg.iloc[i]['text'])
             else:
                 continue
-    elif call.message.text == 'Гарячі лінії з питань запобігання насильству':
-        for i in range(15):
+    elif call.message.text == 'Інші гарячі лінії':
+        for i in range(17):
             if call.data == df_lin_nas.iloc[i].name:
                 bot.send_message(call.message.chat.id, df_lin_nas.iloc[i]['text'])
             else:
@@ -1014,4 +1137,3 @@ if __name__ == '__main__':
         except:
             bot.send_message(317773288, traceback.format_exc())
             pass
-
